@@ -1,43 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <style>
-        /* Scroll Animations */
-        .reveal {opacity:0; transform:translateY(40px); transition:all 0.8s ease;}
-        .reveal.active {opacity:1; transform:translateY(0);}
-        
-        /* Comparison Table */
-        .comparison-table {width:100%; border-collapse:collapse; margin-top:40px;}
-        .comparison-table th, .comparison-table td {padding:14px; text-align:center; border:1px solid rgba(255,255,255,0.08);}
-        .comparison-table th {background:#111827; font-weight:600;}
-        .comparison-table td {background:#0b1220;}
-        .check {color:#22c55e; font-weight:bold;}
-        .cross {color:#ef4444; font-weight:bold;}
-        
-        /* Sticky Mobile CTA */
-        .mobile-sticky-cta {
-            display:none;
-            position:fixed;
-            bottom:0; left:0; right:0;
-            background:#0f172a;
-            padding:12px;
-            box-shadow:0 -4px 20px rgba(0,0,0,0.4);
-            z-index:999;
-        }
-        .mobile-sticky-cta a {
-            display:block;
-            text-align:center;
-            background:#2563eb;
-            color:white;
-            padding:14px;
-            border-radius:8px;
-            font-weight:600;
-            text-decoration:none;
-        }
-        @media(max-width:768px){
-            .mobile-sticky-cta{display:block;}
-        }
-    </style>
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,21 +15,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-    <div class="mobile-sticky-cta">
-    <a href="checkout.html">Get Premium Access for ₹799</a>
-</div>
-    <script>
-const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-  reveals.forEach(r => {
-    const top = r.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      r.classList.add("active");
-    }
-  });
-});
-</script>
-    <body>
+<body>
 
 <!-- NAVBAR -->
 <nav class="checkout-navbar">
@@ -280,76 +228,7 @@ window.addEventListener("scroll", () => {
                     </div>
                 </div>
             </div>
-            <section class="checkout-section reveal">
-    <div class="container">
-        <div style="text-align:center;">
-            <h2>Compare Your Options</h2>
-            <p class="product-tagline">Choose the level of support you want on your MEXT journey</p>
-        </div>
-        <table class="comparison-table">
-            <tr>
-                <th>Features</th>
-                <th>Premium (₹799)</th>
-                <th>Premium Plus (₹4,999)</th>
-            </tr>
-            <tr>
-                <td>Complete MEXT Master Guide</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-            </tr>
-            <tr>
-                <td>Live Zoom Doubt Sessions</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-            </tr>
-            <tr>
-                <td>Interview Preparation Guide</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-            </tr>
-            <tr>
-                <td>Discord Community Access</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-            </tr>
-            <tr>
-                <td>1-on-1 Personal Mentorship</td>
-                <td class="cross">—</td>
-                <td class="check">✔</td>
-            </tr>
-            <tr>
-                <td>Personal SOP Review</td>
-                <td class="cross">—</td>
-                <td class="check">✔</td>
-            </tr>
-            <tr>
-                <td>Custom Strategy Roadmap</td>
-                <td class="cross">—</td>
-                <td class="check">✔</td>
-            </tr>
-        </table>
-    </div>
-</section>
-            <section class="checkout-faq reveal">
-    <div class="container">
-        <h2>Program Questions</h2>
-        <div class="faq-grid">
-            <div class="faq-item">
-                <h4>Do I really only need the Premium plan?</h4>
-                <p>Yes. Premium contains all essential material and live sessions. Premium Plus is only for those who want personal mentorship.</p>
-            </div>
-            <div class="faq-item">
-                <h4>How are Premium Plus students selected?</h4>
-                <p>Seats are limited to 12. Only serious students ready to work hard should apply.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Will prices increase?</h4>
-                <p>Yes. Early supporters get the lowest price. Future batches will cost more.</p>
-            </div>
-        </div>
-    </div>
-</section>
-            
+
         </div>
     </div>
 </section>
