@@ -15,6 +15,51 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/checkout.css">
+    <style>
+/* ===== FIX HUGE EMPTY GAPS (Program Page Only) ===== */
+
+/* Remove forced full-screen section heights */
+section,
+.program-section,
+.hero,
+.program-hero {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+}
+
+/* Reduce extra vertical spacing */
+.container,
+.program-container {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Remove large spacer gaps if any */
+.spacer,
+.section-spacer,
+.big-gap {
+    display: none !important;
+}
+
+/* Fix heading section spacing */
+.program-header,
+.page-header {
+    padding-bottom: 30px !important;
+}
+
+/* Make program cards appear immediately */
+.programs-wrapper,
+.program-grid {
+    margin-top: 20px !important;
+}
+
+/* Footer spacing fix */
+footer {
+    margin-top: 60px !important;
+}
+</style>
 </head>
 <body>
 
@@ -36,35 +81,6 @@
 <section class="checkout-section">
     <div class="container" style="text-align:center; max-width:900px;">
         <h1>Choose the Right Program for Your <span class="highlight">MEXT Journey</span></h1>
-        <section class="program-guide">
-            <h2>Which Program Should You Choose?</h2>
-            <p class="guide-sub">Not sure which plan fits your journey? Here's a simple breakdown.</p>
-            <div class="guide-grid">
-                <div class="guide-card">
-                    <h3>🎯 Choose <span class="highlight">Premium (₹7,991)</span> If:</h3>
-                    <ul>
-                        <li>You want complete MEXT preparation materials</li>
-                        <li>You are confident studying independently</li>
-                        <li>You want guidance but don’t need 1-on-1 mentoring</li>
-                        <li>You want live Zoom group doubt sessions</li>
-                        <li>You want interview preparation support</li>
-                    </ul>
-                    <p class="tagline">Perfect for focused, self-driven students.</p>
-                </div>
-                <div class="guide-card premium-plus">
-                    <h3>👑 Choose <span class="highlight-gold">Premium Plus</span> If:</h3>
-                    <ul>
-                        <li>You want <b>personal 1-on-1 guidance</b></li>
-                        <li>You want your documents personally reviewed</li>
-                        <li>You want a private strategy session</li>
-                        <li>You want maximum selection chances</li>
-                        <li>You prefer expert feedback at every step</li>
-                    </ul>
-                    <p class="tagline">Best for students who want elite-level mentorship.</p>
-                </div>
-            </div>
-        </section>
-        <p class="product-tagline">Serious preparation. Clear roadmap. Real mentorship.</p>
     </div>
 </section>
 
