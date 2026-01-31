@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programs - Your Journey to Japan</title>
+<link rel="stylesheet" href="style.css"> <!-- your main CSS -->
+<style>
+/* Animated Gradient Background */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    opacity: 0;
+    animation: fadeIn 1s forwards, gradientBG 15s ease infinite;
+}
+
+/* Fade-in page */
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Programs Section */
+.programs { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+
+.program-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    padding: 30px;
+    flex: 1 1 300px;
+    max-width: 400px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 1s ease forwards;
+}
+
+.program-card:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(50px);} to { opacity: 1; transform: translateY(0);} }
+
+.program-card h2 { margin-top: 0; color: #0077cc; }
+.price { font-size: 2em; margin: 20px 0; color: #ff4d4d; font-weight: bold; }
+ul { list-style-type: disc; padding-left: 20px; }
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #0077cc;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn:hover { background: #005fa3; transform: scale(1.05); }
+.btn:active { transform: scale(0.95); }
+
+/* Limited Seats Pulsing */
+.limited {
+    color: #ff4d4d;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #fff5f5;
+    padding: 7px 12px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Countdown Timer */
+.countdown { text-align: center; margin: 40px 0 20px; font-size: 1.5em; color: #fff; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); }
+
+/* Popup Modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center; align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    animation: slideDown 0.3s ease forwards;
+}
+
+.modal-content h2 { margin-top: 0; color: #0077cc; }
+.modal-content p { margin: 20px 0; }
+
+.modal .close {
+    position: absolute;
+    top: 15px; right: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal .close:hover { color: #000; }
+
+@keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-btn { background: #0077cc; color: #fff; padding: 12px 25px; border-radius: 10px; text-decoration: none; display: inline-block; transition: background 0.3s ease; }
+.modal-btn:hover { background: #005fa3; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Our Exclusive Programs</h1>
+    <div class="countdown" id="countdown"></div>
+
+    <div class="programs">
+        <!-- Premium Program -->
+        <div class="program-card">
+            <div class="limited">60 Seats Only</div>
+            <h2>Premium Program</h2>
+            <div class="price">₹799</div>
+            <ul>
+                <li>Complete PDF guide to succeed in MEXT Scholarship</li>
+                <li>Access to all study resources</li>
+                <li>Exclusive Discord community access</li>
+                <li>Live group Zoom classes with experts</li>
+                <li>Step-by-step mentorship to achieve your Japan dream</li>
+            </ul>
+            <button class="btn enroll-btn" data-program="Premium Program">Enroll Now</button>
+        </div>
+
+        <!-- Premium Plus Program -->
+        <div class="program-card">
+            <div class="limited">Only 12 Seats!</div>
+            <h2>Premium Plus Program</h2>
+            <div class="price"><del>₹3000</del> ₹2599</div>
+            <ul>
+                <li>Everything in Premium Program</li>
+                <li>1-on-1 Personal 1-hour live session with Rishi</li>
+                <li>Personal review of all your documents</li>
+                <li>High chance of success in MEXT Scholarship</li>
+                <li>Limited seats ensure personalized attention</li>
+                <li>Exclusive insider strategies & mentorship</li>
+            </ul>
+            <button class="btn enroll-btn" data-program="Premium Plus Program">Enroll Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Modal -->
+<div class="modal" id="enrollModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p>Are you sure you want to enroll in this program? You will be redirected to checkout.</p>
+        <a href="#" class="modal-btn" id="confirmBtn">Proceed to Checkout</a>
+    </div>
+</div>
+
+<script>
+// Countdown Timer
+let countdownDate = new Date();
+countdownDate.setDate(countdownDate.getDate() + 3);
+let countdownFunction = setInterval(function() {
+    let now = new Date().getTime();
+    let distance = countdownDate - now;
+    let days = Math.floor(distance / (1000*60*60*24));
+    let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    let seconds = Math.floor((distance % (1000*60)) / 1000);
+    document.getElementById("countdown").innerHTML = `Hurry! Enrollment closes in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    if(distance < 0) { clearInterval(countdownFunction); document.getElementById("countdown").innerHTML = "Enrollment Closed!"; }
+}, 1000);
+
+// Popup Modal
+const modal = document.getElementById("enrollModal");
+const modalTitle = document.getElementById("modalTitle");
+const confirmBtn = document.getElementById("confirmBtn");
+const closeBtn = document.querySelector(".close");
+const enrollBtns = document.querySelectorAll(".enroll-btn");
+
+enrollBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        let program = btn.getAttribute("data-program");
+        modalTitle.innerText = program;
+        confirmBtn.href = `checkout.html?program=${program.toLowerCase().replace(/\s+/g, '')}`;
+        modal.style.display = "flex";
+    });
+});
+
+closeBtn.addEventListener("click", () => { modal.style.display = "none"; });
+window.addEventListener("click", e => { if(e.target == modal){ modal.style.display = "none"; } });
+</script>
+
+</body>
+</html>
