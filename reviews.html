@@ -1,1 +1,330 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MEXT Mentorship Reviews</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:
+radial-gradient(circle at 12% 12%, rgba(232, 93, 117, 0.12), transparent 40%),
+radial-gradient(circle at 85% 10%, rgba(255, 183, 197, 0.2), transparent 45%),
+linear-gradient(180deg,#ffffff 0%,#f5f5f5 100%);
+color:#1a1a1a;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+max-width:1200px;
+margin:auto;
+padding:120px 20px 80px;
+text-align:center;
+}
+
+.badge{
+display:inline-block;
+padding:8px 18px;
+background:#ffe5e9;
+border-radius:30px;
+font-size:12px;
+font-weight:700;
+letter-spacing:2px;
+color:#c41e3a;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:56px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.hero p{
+color:#555;
+max-width:650px;
+margin:auto;
+line-height:1.6;
+}
+
+/* TRUST BOX */
+
+.trust{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:50px;
+}
+
+.trust-card{
+background:white;
+padding:22px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.trust-card h3{
+color:#c41e3a;
+margin-bottom:6px;
+}
+
+/* REVIEWS */
+
+.gallery{
+max-width:1200px;
+margin:auto;
+padding:40px 20px 100px;
+column-count:3;
+column-gap:20px;
+}
+
+@media(max-width:900px){
+.gallery{column-count:2;}
+}
+
+@media(max-width:600px){
+.gallery{column-count:1;}
+}
+
+.review{
+margin-bottom:20px;
+cursor:pointer;
+position:relative;
+transition:transform .3s;
+}
+
+.review:hover{
+transform:scale(1.03);
+}
+
+.review img{
+width:100%;
+border-radius:18px;
+box-shadow:0 8px 28px rgba(0,0,0,0.15);
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:14px;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* SAKURA CANVAS */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+pointer-events:none;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<canvas id="sakura"></canvas>
+
+<section class="hero">
+
+<span class="badge">SAKURA REVIEWS WALL</span>
+
+<h1>MEXT Scholarship Mentorship</h1>
+
+<p>
+Real chats. Real results. Explore screenshots from students who joined the mentorship
+and successfully progressed in their MEXT journey.
+</p>
+
+<div class="trust">
+
+<div class="trust-card">
+<h3>1:1 Guidance</h3>
+<p>Personalized strategy for your application</p>
+</div>
+
+<div class="trust-card">
+<h3>Proven Results</h3>
+<p>Real mentee conversations and outcomes</p>
+</div>
+
+<div class="trust-card">
+<h3>MEXT Focused</h3>
+<p>Only scholarship mentoring</p>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="gallery" id="gallery"></section>
+
+
+
+<div class="lightbox" id="lightbox">
+<span class="close" onclick="closeLightbox()">✕</span>
+<img id="lightboxImg">
+</div>
+
+
+<script>
+
+/* CREATE REVIEW WALL */
+
+const gallery=document.getElementById("gallery")
+
+for(let i=1;i<=15;i++){
+
+let div=document.createElement("div")
+div.className="review"
+
+let img=document.createElement("img")
+
+img.src=`images/reviews/review${i}.jpeg`
+
+img.onerror=function(){
+div.remove()
+}
+
+img.onclick=function(){
+openLightbox(this.src)
+}
+
+div.appendChild(img)
+
+gallery.appendChild(div)
+
+}
+
+
+
+/* LIGHTBOX */
+
+function openLightbox(src){
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("lightboxImg").src=src
+}
+
+function closeLightbox(){
+document.getElementById("lightbox").style.display="none"
+}
+
+
+
+/* SAKURA ANIMATION */
+
+const canvas=document.getElementById("sakura")
+const ctx=canvas.getContext("2d")
+
+let petals=[]
+let count=35
+
+function resize(){
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+}
+
+window.onresize=resize
+resize()
+
+function createPetal(){
+return{
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:6+Math.random()*8,
+speed:0.5+Math.random(),
+swing:Math.random()*0.6
+}
+}
+
+for(let i=0;i<count;i++){
+petals.push(createPetal())
+}
+
+function drawPetal(p){
+
+ctx.beginPath()
+
+ctx.fillStyle="rgba(255,183,197,0.6)"
+
+ctx.ellipse(p.x,p.y,p.size,p.size*0.6,0,0,Math.PI*2)
+
+ctx.fill()
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+petals.forEach(p=>{
+
+p.y+=p.speed
+
+p.x+=Math.sin(p.y*0.02)*p.swing
+
+if(p.y>canvas.height){
+
+p.y=-10
+p.x=Math.random()*canvas.width
+
+}
+
+drawPetal(p)
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+</script>
+
+</body>
+</html>
+```
 
